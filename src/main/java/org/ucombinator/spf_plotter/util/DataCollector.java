@@ -17,34 +17,26 @@ public class DataCollector {
         this.functions = new TreeMap<>();
     }
 
-    public void addRawDataPoint(Double dataPoint) {
+    void addRawDataPoint(Double dataPoint) {
         rawData.add(dataPoint);
     }
 
-    public void addSeries(String seriesName) {
+    void addSeries(String seriesName) {
         numSeries += 1;
         data.put(seriesName, new ArrayList<>());
         functions.put(seriesName, null);
     }
 
-    public void addSeriesDataPoint(String seriesName, Double dataPoint) {
+    void addSeriesDataPoint(String seriesName, Double dataPoint) {
         data.get(seriesName).add(dataPoint);
     }
 
-    public void setSeriesFunction(String seriesName, String function) {
+    void setSeriesFunction(String seriesName, String function) {
         functions.put(seriesName, function);
     }
 
-    public int getNumSeries() {
+    int getNumSeries() {
         return numSeries;
-    }
-
-    public int getRawSeriesLength() {
-        return rawData.size();
-    }
-
-    public int getSeriesLength(String seriesName) {
-        return data.get(seriesName).size();
     }
 
     public List<Double> getRawSeries() {
