@@ -93,6 +93,25 @@ public class Plotter extends ApplicationFrame {
             checkPanel.add(rawPanel);
         }
 
+        for (String seriesName : collector.getSortedSeriesNames()) {
+            List<Double> series = collector.getDataSeries(seriesName);
+            JPanel boxPanel = new JPanel(new GridLayout(0, 1));
+            boxPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), seriesName));
+            JCheckBox checkbox = new JCheckBox("Toggle Plot");
+            checkbox.setSelected(true);
+            checkbox.addItemListener(listener);
+            boxPanel.add(checkbox);
+            boxPanel.add(new JLabel("Function: " + collector.getSeriesFunction(seriesName)));
+
+            XYSeries xySeries = new XYSeries(seriesName);
+            for (int i = 0; i < series.size(); ++i) {
+                xySeries.add(i, series.get(i));
+            }
+            ccDataset.addSeries(xySeries);
+            checkPanel.add(boxPanel);
+            box2series.put(checkbox, xySeries);
+        }
+
         JPanel mainPanel = new JPanel(new BorderLayout());
 
         mainPanel.add(checkPanel, BorderLayout.LINE_START);
