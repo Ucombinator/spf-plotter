@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="spf-plotter:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/spf_plotter_jar</output-path>
+    <root id="archive" name="spf-plotter.jar">
+      <element id="module-output" name="spf-plotter" />
+    </root>
+  </artifact>
+</component>
