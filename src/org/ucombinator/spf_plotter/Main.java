@@ -9,12 +9,13 @@ public class Main {
         assert args.length == 2;
         String dataFile = args[0];
         String functionsFile = args[1];
-        DataLoader loader;
+        DataLoader loader = null;
         try {
             loader = new DataLoader(dataFile, functionsFile);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.exit(1);
         }
+        Plotter plotter = new Plotter(loader.getCollector());
     }
 }
