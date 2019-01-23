@@ -2,6 +2,7 @@ package org.ucombinator.spf_plotter;
 
 import org.ucombinator.spf_plotter.util.DataLoader;
 
+import java.awt.*;
 import java.io.FileNotFoundException;
 
 public class Main {
@@ -17,5 +18,8 @@ public class Main {
             System.exit(1);
         }
         Plotter plotter = new Plotter(loader.getCollector());
+        plotter.setPreferredSize(new Dimension(1024, 768));
+        plotter.pack();
+        plotter.setVisible(true);
     }
 }
