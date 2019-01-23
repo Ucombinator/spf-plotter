@@ -31,17 +31,17 @@ public class DataLoader {
         assert headers[1].toLowerCase().equals("raw");
         int sizeCol = 0;
         int rawCol = 1;
-        for (String seriesName : headers) {
-            this.collector.addSeries(seriesName);
+        for (int c = 0; c < numCols; ++c) {
+            if (!(c == sizeCol || c == rawCol)) {
+                this.collector.addSeries(headers[c]);
+            }
         }
         while (dataScanner.hasNextLine()) {
             String[] cols = dataScanner.nextLine().split(",");
             for (int c = 0; c < numCols; ++c) {
-                if (c == sizeCol) {
-                    continue;
-                } else if (c == rawCol) {
+                if (c == rawCol) {
                     this.collector.addRawDataPoint(Double.parseDouble(cols[c]));
-                } else {
+                } else if (c != sizeCol) {
                     this.collector.addSeriesDataPoint(headers[c], Double.parseDouble(cols[c]));
                 }
             }
