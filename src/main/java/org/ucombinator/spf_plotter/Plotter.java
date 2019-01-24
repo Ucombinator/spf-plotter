@@ -18,6 +18,11 @@ import org.jfree.data.xy.XYSeriesCollection;
 import org.jfree.ui.ApplicationFrame;
 import javax.swing.*;
 
+/**
+ * Much of the implementation of this class was essentially copy/pasted from:
+ *   https://github.com/isstac/spf-wca/blob/master/src/main/wcanalysis/charting/WorstCaseChart.java
+ */
+
 public class Plotter extends ApplicationFrame {
     private DataCollector collector;
     private String chartTitle = "Chart Title";
